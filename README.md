@@ -9,6 +9,7 @@ You've also probably come across the issue of prop drilling - say you have to pa
 
 React.js' solution to these problems is **the [Context API](https://reactjs.org/docs/context.html)**
 
+I've used it in a **real world example, a todo app**. The code is [here](https://github.com/prerna-p/task-app) and the app is live [here](https://prerna-p.github.io/task-app/). It utilizes browser local storage.
 ### How to use it (a template)
 1. Declare context(s). <br />
 Just like you would declare components under ```src/components```, create ```src/contexts``` for your project. 
@@ -62,3 +63,20 @@ export default App
 ```
 
 4. Utilize the props in a child component
+```javascript
+import { MyFirstContext } from '../contexts/MyFirstContext'
+
+const PrintNumbers = () => {
+    const { list } = useContext(MyFirstContext); // destructuring the list from context
+    return (
+      <div>
+        {list.length ?
+            (<ul>
+                { list.map(num => 
+                    return <li> num </li>;
+                )}
+            </ul>) : <div>> no list yet</div>}
+      </div>
+    )
+}
+```
